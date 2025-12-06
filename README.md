@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # INDE577 / CMOR 438 – Data Science & Machine Learning  
 ### Rice University · Fall 2025
 
@@ -185,3 +186,7 @@ This repository was created as part of
 at **Rice University**, instructed by **Dr. Randy R. Davila**.
 
 
+=======
+# INDE-577
+training in the machine learning class
+>>>>>>> 5c2b6253d368607dc9b307062951221a6b296dc6
