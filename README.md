@@ -119,20 +119,45 @@ ml_project/
 │
 └── examples/
         ├── Supervised_Learning/
-        │       ├── Perceptron.ipynb
-        │       ├── Logistic_Regression.ipynb
-        │       ├── Linear_Regression.ipynb
-        │       ├── Multilayer_Perceptron.ipynb
-        │       ├── KNN.ipynb
-        │       ├── Decision_Trees.ipynb
-        │       ├── Random_Forests.ipynb
-        │       └── Ensemble_Methods.ipynb
+        │       ├── Perceptron/
+        │       │       ├── Perceptron.ipynb
+        │       │       └── README.md
+        │       ├── Logistic_Regression/
+        │       │       ├── Logistic_Regression.ipynb
+        │       │       └── README.md
+        │       ├── Linear_Regression/
+        │       │       ├── Linear_Regression.ipynb
+        │       │       └── README.md
+        │       ├── Multilayer_Perceptron/
+        │       │       ├── Multilayer_Perceptron.ipynb
+        │       │       └── README.md
+        │       ├── KNN/
+        │       │       ├── KNN.ipynb
+        │       │       └── README.md
+        │       ├── Decision_Trees/
+        │       │       ├── Decision_Trees.ipynb
+        │       │       └── README.md
+        │       ├── Random_Forests/
+        │       │       ├── Random_Forests.ipynb
+        │       │       └── README.md
+        │       └── Ensemble_Methods/
+        │               ├── Ensemble_Methods.ipynb
+        │               └── README.md
         │
         └── Unsupervised_Learning/
-                ├── PCA.ipynb
-                ├── KMeans.ipynb
-                ├── DBSCAN.ipynb
-                └── Label_Propagation.ipynb
+                ├── PCA/
+                │       ├── PCA.ipynb
+                │       └── README.md
+                ├── KMeans/
+                │       ├── KMeans.ipynb
+                │       └── README.md
+                ├── DBSCAN/
+                │       ├── DBSCAN.ipynb
+                │       └── README.md
+                └── Label_Propagation/
+                        ├── Label_Propagation.ipynb
+                        └── README.md
+
 ```
 ---
 
