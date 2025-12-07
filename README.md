@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # INDE577 / CMOR 438 – Data Science & Machine Learning  
 ### Rice University · Fall 2025
 
@@ -25,7 +24,6 @@ and practical machine learning workflows.
 
 **Dr. Randy R. Davila**, Department of Computational & Applied Mathematics  
 Rice University  
-Email: *rrd6@rice.edu*
 
 ---
 
@@ -184,9 +182,3 @@ See the `LICENSE` file for details.
 This repository was created as part of  
 **INDE 577 / CMOR 438 – Data Science & Machine Learning**  
 at **Rice University**, instructed by **Dr. Randy R. Davila**.
-
-
-=======
-# INDE-577
-training in the machine learning class
->>>>>>> 5c2b6253d368607dc9b307062951221a6b296dc6
