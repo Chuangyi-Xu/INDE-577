@@ -1,0 +1,20 @@
+[build-system] 
+requires = ["setuptools>=61.0"] 
+build-backend = "setuptools.build_meta" 
+ 
+[project] 
+name = "rice_ml" 
+version = "0.1.0" 
+description = "Machine learning algorithms implemented from scratch for INDE 577 / CMOR 438." 
+requires-python = ">=3.8" 
+dependencies = ["numpy", "matplotlib"] 
+ 
+[tool.setuptools] 
+package-dir = {"" = "src"} 
+ 
+[tool.setuptools.packages.find] 
+where = ["src"] 
+ 
+[tool.pytest.ini_options] 
+addopts = "-q" 
+pythonpath = ["src"] 

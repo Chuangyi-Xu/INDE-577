@@ -88,77 +88,77 @@ ml_project/
 ├── .gitignore
 │
 ├── src/
-│   └── rice_ml/
-│       ├── __init__.py
-│       ├── perceptron.py
-│       ├── logistic_regression.py
-│       ├── linear_regression.py
-│       ├── multilayer_perceptron.py
-│       ├── knn.py
-│       ├── decision_trees.py
-│       ├── random_forest.py
-│       ├── ensemble_methods.py
-│       ├── dimensionality_reduction.py
-│       ├── kmeans.py
-│       ├── dbscan.py
-│       └── label_propagation.py
+│    └── rice_ml/
+│        ├── __init__.py
+│        ├── perceptron.py
+│        ├── logistic_regression.py
+│        ├── linear_regression.py
+│        ├── multilayer_perceptron.py
+│        ├── knn.py
+│        ├── decision_trees.py
+│        ├── random_forest.py
+│        ├── ensemble_methods.py
+│        ├── dimensionality_reduction.py
+│        ├── kmeans.py
+│        ├── dbscan.py
+│        └── label_propagation.py
 │
 ├── tests/
-│       ├── test_perceptron.py
-│       ├── test_logistic_regression.py
-│       ├── test_linear_regression.py
-│       ├── test_multilayer_perceptron.py
-│       ├── test_knn.py
-│       ├── test_decision_trees.py
-│       ├── test_random_forest.py
-│       ├── test_ensemble_methods.py
-│       ├── test_dimensionality_reduction.py
-│       ├── test_kmeans.py
-│       ├── test_dbscan.py
-│       └── test_label_propagation.py
+│    ├── test_perceptron.py
+│    ├── test_logistic_regression.py
+│    ├── test_linear_regression.py
+│    ├── test_multilayer_perceptron.py
+│    ├── test_knn.py
+│    ├── test_decision_trees.py
+│    ├── test_random_forest.py
+│    ├── test_ensemble_methods.py
+│    ├── test_dimensionality_reduction.py
+│    ├── test_kmeans.py
+│    ├── test_dbscan.py
+│    └── test_label_propagation.py
 │
 └── examples/
-        ├── Supervised_Learning/
-        │       ├── Perceptron/
-        │       │       ├── Perceptron.ipynb
-        │       │       └── README.md
-        │       ├── Logistic_Regression/
-        │       │       ├── Logistic_Regression.ipynb
-        │       │       └── README.md
-        │       ├── Linear_Regression/
-        │       │       ├── Linear_Regression.ipynb
-        │       │       └── README.md
-        │       ├── Multilayer_Perceptron/
-        │       │       ├── Multilayer_Perceptron.ipynb
-        │       │       └── README.md
-        │       ├── KNN/
-        │       │       ├── KNN.ipynb
-        │       │       └── README.md
-        │       ├── Decision_Trees/
-        │       │       ├── Decision_Trees.ipynb
-        │       │       └── README.md
-        │       ├── Random_Forests/
-        │       │       ├── Random_Forests.ipynb
-        │       │       └── README.md
-        │       └── Ensemble_Methods/
-        │               ├── Ensemble_Methods.ipynb
-        │               └── README.md
-        │
-        └── Unsupervised_Learning/
-                ├── PCA/
-                │       ├── PCA.ipynb
-                │       └── README.md
-                ├── KMeans/
-                │       ├── KMeans.ipynb
-                │       └── README.md
-                ├── DBSCAN/
-                │       ├── DBSCAN.ipynb
-                │       └── README.md
-                └── Label_Propagation/
-                        ├── Label_Propagation.ipynb
-                        └── README.md
-
+     ├── Supervised_Learning/
+     │    ├── Perceptron/
+     │    │    ├── Perceptron.ipynb
+     │    │    └── README.md
+     │    ├── Logistic_Regression/
+     │    │    ├── Logistic_Regression.ipynb
+     │    │    └── README.md
+     │    ├── Linear_Regression/
+     │    │    ├── Linear_Regression.ipynb
+     │    │    └── README.md
+     │    ├── Multilayer_Perceptron/
+     │    │    ├── Multilayer_Perceptron.ipynb
+     │    │    └── README.md
+     │    ├── KNN/
+     │    │    ├── KNN.ipynb
+     │    │    └── README.md
+     │    ├── Decision_Trees/
+     │    │    ├── Decision_Trees.ipynb
+     │    │    └── README.md
+     │    ├── Random_Forests/
+     │    │    ├── Random_Forests.ipynb
+     │    │    └── README.md
+     │    └── Ensemble_Methods/
+     │         ├── Ensemble_Methods.ipynb
+     │         └── README.md
+     │
+     └── Unsupervised_Learning/
+          ├── PCA/
+          │    ├── PCA.ipynb
+          │    └── README.md
+          ├── KMeans/
+          │    ├── KMeans.ipynb
+          │    └── README.md
+          ├── DBSCAN/
+          │    ├── DBSCAN.ipynb
+          │    └── README.md
+          └── Label_Propagation/
+               ├── Label_Propagation.ipynb
+               └── README.md
 ```
+
 ---
 
 ## Installation
