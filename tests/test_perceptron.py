@@ -21,6 +21,7 @@ def test_perceptron_fit_and_predict_simple_dataset():
     assert y_pred.shape == y.shape
     assert np.array_equal(y_pred, y)
 
+# unit test for score method
 def test_perceptron_score_range():
     X = np.array([[0, 0], [1, 1]])
     y = np.array([0, 1])

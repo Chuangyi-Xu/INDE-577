@@ -61,6 +61,7 @@ class Perceptron:
         return self
 
     def decision_function(self, X):
+        # Compute the decision function scores
         X = np.asarray(X)
         return np.dot(X, self.w_) + self.b_
 
@@ -71,6 +72,7 @@ class Perceptron:
         return np.where(labels == -1, 0, 1)
 
     def score(self, X, y):
+        # Return the mean accuracy on the given test data and labels.
         y = np.asarray(y)
         y_pred = self.predict(X)
         return np.mean(y_pred == y)
