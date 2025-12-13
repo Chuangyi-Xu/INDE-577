@@ -34,14 +34,26 @@ The implementation follows a clean, **scikit-learn–style API** and is fully in
 
 ## File Structure
 
-`src/rice_ml/regression_trees.py        # Core regression tree implementation tests/test_regression_trees.py         # Unit tests examples/Regression_Tree.ipynb         # End-to-end notebook example`
+`src/rice_ml/regression_trees.py`        
+
+`tests/test_regression_trees.py`         
+
+`examples/Regression_Tree.ipynb`            
 
 ---
 
 ## Class API
 
-`from rice_ml.regression_trees import RegressionTreeRegressor  model = RegressionTreeRegressor(     max_depth=3,     min_samples_leaf=20,     random_state=42 )  model.fit(X_train, y_train) y_pred = model.predict(X_test)`
-
+```from rice_ml.regression_trees import RegressionTreeRegressor  
+model = RegressionTreeRegressor(     
+    max_depth=3,     
+    min_samples_leaf=20,     
+    random_state=42 
+    )  
+    
+model.fit(X_train, y_train) 
+y_pred = model.predict(X_test)`
+```
 ---
 
 ## Notebook Overview — Housing Price Regression
