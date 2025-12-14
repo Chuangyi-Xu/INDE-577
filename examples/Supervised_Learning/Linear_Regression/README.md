@@ -1,62 +1,149 @@
-# Linear Regression Example
+# Linear Regression Module
 
-This example demonstrates how to apply a custom **Linear Regression** implementation to the Auto MPG dataset. 
-The notebook walks through data preprocessing, model training with gradient descent, feature scaling, 
-and evaluation using standard regression metrics and visualization tools.
-
----
-
-## Overview
-
-Linear Regression is a fundamental supervised learning algorithm used to model the relationship between 
-a continuous target variable and one or more input features.  
-In this example, we:
-
-- Load and clean the Auto MPG dataset  
-- Apply feature scaling for stable optimization  
-- Train a custom linear regression model using gradient descent  
-- Visualize loss convergence, predictions, and residuals  
-- Interpret learned coefficients  
+This module implements a fully vectorized **multiple linear regression model** from scratch using NumPy.  
+It follows a clean, scikit-learn–style API and is integrated into the project with **unit tests** and a complete **Jupyter Notebook example** based on the Auto MPG dataset.
 
 ---
 
-## Dataset
+## Features
 
-The dataset used in this example is the **Auto MPG dataset**, which includes information about vehicles such as:
-
-- displacement  
-- horsepower  
-- weight  
-- acceleration  
-- model year  
-
-The target variable is **mpg** (miles per gallon), representing fuel efficiency.
+- Gradient Descent optimization for minimizing Mean Squared Error (MSE)
+    
+- Support for:
+    
+    - `learning_rate`
+        
+    - `n_epochs`
+        
+    - `fit_intercept`
+        
+    - `tol`
+        
+- Tracks training history through:
+    
+    - `losses_`
+        
+- Returns model parameters:
+    
+    - `weights_`
+        
+    - `bias_`
+        
+- Includes:
+    
+    - `predict()` — continuous value predictions
+        
+    - `score()` — R² coefficient of determination
+        
+- Fully compatible with the project testing framework (`pytest`)
+    
 
 ---
 
-## Model Description
-
-The Linear Regression model assumes a linear relationship between features and the target:
-
-$$\large \hat{y} = w_1 x_1 + w_2 x_2 + \dots + w_n x_n + b$$
-
-The parameters are optimized using **Gradient Descent** to minimize the Mean Squared Error (MSE):
-
-$$\large \text{MSE} = \frac{1}{m} \sum_{i=1}^m (\hat{y}^{(i)} - y^{(i)})^2$$
-
-Feature scaling is applied to ensure stable and efficient convergence.
+## File Structure
+```
+src/rice_ml/linear_regression.py
+        
+tests/test_linear_regression.py
+         
+examples/Linear_Regression.ipynb        
+```
 
 ---
 
-## Training Procedure
+## Class API
+
+```
+from rice_ml.linear_regression import LinearRegression  
+
+model = LinearRegression(     
+	learning_rate=0.01,     
+	n_epochs=2000,     
+	fit_intercept=True 
+)  
+
+model.fit(X_train, y_train) 
+y_pred = model.predict(X_test)
+```
+
+---
+
+## Notebook Overview — Regression Application
+
+The example notebook demonstrates linear regression on the **Auto MPG dataset**,  
+where the goal is to predict **vehicle fuel efficiency (mpg)** based on engine and vehicle characteristics.
 
 The notebook includes:
 
-1. Data loading and preprocessing  
-2. Handling missing values  
-3. Standardizing selected features using `StandardScaler`  
-4. Training the Linear Regression model using gradient descent  
-5. Plotting the training loss curve  
-6. Evaluating performance with R² score  
-7. Visualization of predictions and residuals  
+1. Data loading and numeric inspection
+    
+2. Handling missing values in raw automotive data
+    
+3. Feature selection for regression modeling
+    
+4. Train–test split for unbiased evaluation
+    
+5. Training a baseline linear regression model
+    
+6. Feature scaling for gradient descent stability
+    
+7. Model evaluation:
+    
+    - R² score
+        
+    - Prediction vs. true value visualization
+        
+    - Residual analysis
+        
+8. Feature interpretation:
+    
+    - Coefficient magnitude comparison
+        
+    - Directional impact of each feature
+        
 
+---
+
+## Key Results
+
+- Gradient descent converges smoothly after feature scaling
+    
+- The model achieves a reasonable **R² score** on both training and test sets
+    
+- Prediction vs. true value plots show strong linear alignment
+    
+- Residual plots indicate:
+    
+    - Approximate zero-mean residuals
+        
+    - Mild nonlinearity suggesting possible higher-order effects
+        
+- Most influential features on fuel efficiency:
+    
+    - **Weight** (strong negative impact on mpg)
+        
+    - **Displacement** (larger engines reduce fuel efficiency)
+        
+    - **Horsepower** (higher power correlates with lower mpg)
+        
+
+---
+
+## Unit Tests
+
+Unit tests ensure the correctness and stability of the implementation:
+
+- Model instantiation and parameter initialization
+    
+- Gradient descent updates model weights correctly
+    
+- `predict()` outputs continuous numeric values
+    
+- `score()` returns valid R² values
+    
+- The model fits a simple synthetic linear dataset accurately
+    
+
+Run tests with:
+
+`pytest tests/test_linear_regression.py -q`

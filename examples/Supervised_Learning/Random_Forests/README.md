@@ -1,125 +1,168 @@
-# Random Forest
+# Random Forest Module
 
-## Overview
+This module implements a **Random Forest learning algorithm from scratch** using NumPy, following a clean, **scikit-learn–style API**.  
+The implementation builds upon a custom Decision Tree base learner and demonstrates how **ensemble learning (bagging)** improves model stability and generalization.
 
-Random Forest is an **ensemble learning method** that builds multiple decision trees and combines their predictions to improve generalization performance.  
-By introducing randomness in both data sampling and feature selection, Random Forest reduces variance compared to a single decision tree while maintaining strong predictive power.
-
-In this example, we demonstrate the Random Forest algorithm on a **real-world regression task** and compare its performance with a Decision Tree baseline.
+The module is fully integrated into the project with **unit tests** and a complete **Jupyter Notebook example** using a real-world bike sharing demand dataset.
 
 ---
 
-## Algorithm Description
+## Features
 
-Random Forest is based on the principle of **bagging (bootstrap aggregating)**:
-
-1. Multiple decision trees are trained on different **bootstrap samples** of the training data.
+- Ensemble learning via **bootstrap aggregation (bagging)**
     
-2. At each split, only a **random subset of features** is considered.
+- Support for:
     
-3. Predictions from all trees are combined:
-    
-    - **Regression:** average of predictions
+    - `n_estimators`
         
-    - **Classification:** majority vote
+    - `max_depth`
         
-
-This approach reduces correlation among individual trees and leads to more stable and robust predictions.
-
----
-
-## Dataset
-
-We use the **Seoul Bike Sharing Demand** dataset, which contains hourly bike rental records along with weather-related and temporal features.
-
-- **Task type:** Regression
+    - `min_samples_split`
+        
+    - `max_features`
+        
+    - `bootstrap`
+        
+    - `random_state`
+        
+- Supports both:
     
-- **Target variable:** `Rented Bike Count`
+    - **Regression** (prediction averaging)
+        
+    - **Classification** (majority voting)
+        
+- Reuses custom `DecisionTreeRegressor` and `DecisionTreeClassifier`
     
-- **Features:** Weather conditions and time-related variables such as temperature, humidity, wind speed, and hour of the day
-    
-
-The dataset exhibits strong non-linear patterns, making it suitable for tree-based ensemble methods.
-
----
-
-## Experimental Setup
-
-### Models
-
-Two models are trained and evaluated:
-
-- **Decision Tree Regressor** (baseline)
-    
-- **Random Forest Regressor**
-    
-
-Both models are implemented from scratch in the `rice_ml` package using a scikit-learn–style API.
-
----
-
-### Data Preprocessing
-
-- Only numeric features are used
-    
-- Rows with missing values are removed
-    
-- No feature scaling is applied, as tree-based models are scale-invariant
-    
-- The dataset is split into training (80%) and testing (20%) sets
+- Fully compatible with the project testing framework (**pytest**)
     
 
 ---
 
-### Evaluation Metric
+## Class API
 
-Model performance is evaluated using **Mean Squared Error (MSE)**:
+### RandomForestRegressor
 
-$$\large \text{MSE} = \frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{y}_i)^2$$
+```
+from rice_ml.random_forest  import RandomForestRegressor  
 
-Lower MSE indicates better predictive performance.
+rf = RandomForestRegressor(     
+	n_estimators=100,     
+	max_depth=8,     
+	min_samples_split=10,     
+	max_features="sqrt",     
+	random_state=42 
+) 
+
+rf.fit(X_train, y_train) 
+y_pred = rf.predict(X_test)
+```
+
+### RandomForestClassifier
+
+```
+from rice_ml.random_forest  import RandomForestClassifier  
+
+clf = RandomForestClassifier(     
+	n_estimators=100,     
+	max_depth=6,     
+	random_state=42 
+)  
+clf.fit(X_train, y_train) 
+y_pred = clf.predict(X_test)
+```
 
 ---
 
-## Results
+## Notebook Overview — Real-World Regression Example
 
-The Random Forest model consistently achieves **lower test MSE** than the single Decision Tree.
+The example notebook demonstrates **Random Forest regression** on the  
+**Seoul Bike Sharing Demand** dataset, where the goal is to predict hourly bike rental demand based on weather and temporal conditions.
 
-|Model|Test MSE|
-|---|---|
-|Decision decision Tree|Higher|
-|Random Forest|Lower|
+The notebook focuses on illustrating **ensemble learning behavior**, rather than extensive feature engineering.
 
-This demonstrates the effectiveness of ensemble learning in reducing variance and improving generalization.
+### Notebook includes:
 
----
-
-## Discussion
-
-The Decision Tree model can capture complex non-linear relationships but is sensitive to training data variations.  
-Random Forest mitigates this issue by averaging multiple de-correlated trees, resulting in smoother predictions and better robustness to noise.
-
-This example highlights the **bias–variance trade-off** and shows why Random Forest is often preferred over a single tree in practical applications.
-
----
-
-## Files in This Directory
-
-`Random_Forest/ ├── Random_Forest.ipynb └── README.md`
-
-- `Random_Forest.ipynb`: Step-by-step implementation and comparison of Decision Tree and Random Forest models
+1. Dataset loading with non-UTF-8 encoding handling
     
-- `README.md`: Overview and explanation of the Random Forest example
+2. Feature selection using numeric weather and time variables
     
+3. Train–test split for model evaluation
+    
+4. Training a **Decision Tree Regressor** as a baseline
+    
+5. Training a **Random Forest Regressor**
+    
+6. Model evaluation using **Mean Squared Error (MSE)**
+    
+7. Quantitative comparison between Decision Tree and Random Forest
+    
+8. Discussion of variance reduction and generalization improvements
+    
+
+---
+
+## Key Results
+
+- **Decision Tree** shows higher variance and less stable test performance
+    
+- **Random Forest** achieves **lower test MSE** and smoother predictions
+    
+- Ensemble averaging significantly improves generalization on unseen data
+    
+
+These results demonstrate how bagging reduces variance compared to a single high-capacity model.
+
+---
+
+## Conceptual Takeaways
+
+- Decision Trees have **low bias but high variance**
+    
+- Random Forest reduces variance by:
+    
+    - training on bootstrap samples
+        
+    - introducing feature-level randomness
+        
+- Ensemble learning improves robustness without heavy preprocessing
+    
+- Random Forest is a strong baseline for many real-world regression tasks
+    
+
+---
+
+## Unit Tests
+
+Unit tests ensure correctness and stability of the implementation:
+
+- Model instantiation
+    
+- Correct fitting behavior
+    
+- Output shape consistency
+    
+- Regression prediction averaging
+    
+- Classification majority voting
+    
+- Reasonable performance on simple synthetic datasets
+    
+
+Run tests with:
+
+`pytest tests/test_random_forest.py -q`
 
 ---
 
 ## Summary
 
-- Random Forest is a powerful ensemble method for regression and classification
+- Random Forest is a powerful ensemble method based on bagging
     
-- It improves generalization by reducing variance through bootstrapping and feature randomness
+- It improves generalization by reducing variance
     
-- On the Seoul Bike Sharing dataset, Random Forest outperforms a single Decision Tree
+- The implementation is modular, testable, and reusable
     
-- This example demonstrates the practical benefits of ensemble learning on real-world data
+- The example demonstrates practical benefits on real-world data
+    
+
+This module complements the Decision Tree implementation and illustrates the core idea of **ensemble learning in practice**.

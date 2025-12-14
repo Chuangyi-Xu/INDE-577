@@ -1,123 +1,135 @@
-# K-Nearest Neighbors (KNN)
+# K-Nearest Neighbors (KNN) Module
 
-## Overview
+This module implements a **k-Nearest Neighbors (KNN) classifier from scratch**  
+using NumPy. The implementation follows a clean, scikit-learn–style API and is  
+fully integrated into the project with **unit tests** and a complete **Jupyter  
+Notebook example** based on a real-world Kaggle dataset.
 
-The k-Nearest Neighbors (KNN) algorithm is a non-parametric, instance-based  
-learning method commonly used for classification problems. Unlike parametric  
-models that learn an explicit decision function during training, KNN makes  
-predictions by comparing a new observation to the most similar samples in the  
-training set based on a distance metric.
-
-In this example, we implement KNN from scratch using NumPy and apply it to a  
-real-world dataset from Kaggle to study the effect of hyperparameters such as  
-the number of neighbors and distance metrics on classification performance.
+KNN is a non-parametric, instance-based learning algorithm that makes predictions  
+based on similarity in feature space, providing a strong contrast to  
+optimization-based models such as logistic regression.
 
 ---
 
-## Algorithm Description
+## Features
 
-Given a training dataset
-
-$$\large \{(\mathbf{x}_i, y_i)\}_{i=1}^n$$
-
-the KNN classifier predicts the label of a new observation $\large \mathbf{x}$ by:
-
-1. Computing the distance between $\large \mathbf{x}$ and all training samples  
-    using a predefined distance metric.
+- Distance-based, non-parametric classification
     
-2. Selecting the k nearest neighbors with the smallest distances.
+- Support for multiple distance metrics:
     
-3. Assigning the class label by majority voting among these neighbors.
+    - `euclidean`
+        
+    - `manhattan`
+        
+- Configurable number of neighbors (`k`)
     
-
-Because KNN does not assume any functional form of the decision boundary, it is  
-capable of modeling complex, nonlinear relationships in the data.
-
----
-
-## Distance Metrics
-
-In this implementation, the following distance metrics are supported:
-
-- **Euclidean distance**
+- Clean `fit()` / `predict()` API
     
-
-$$\large d(\mathbf{x}, \mathbf{x}') = \sqrt{\sum_{j=1}^{p}(x_j - x'_j)^2}$$
-
-- **Manhattan distance**
+- Fully vectorized distance computation
     
-
-$$\large d(\mathbf{x}, \mathbf{x}') = \sum_{j=1}^{p} |x_j - x'_j|$$
-
-The choice of distance metric can significantly affect model performance,  
-especially when features are measured on different scales.
-
----
-
-## Dataset
-
-The dataset used in this example is the **Breast Cancer Wisconsin (Diagnostic)**  
-dataset obtained from Kaggle. It contains 569 samples with 30 numerical features  
-describing characteristics of cell nuclei computed from digitized images of  
-fine needle aspirates (FNA) of breast masses.
-
-The target variable indicates whether a tumor is malignant (M) or benign (B).
-
----
-
-## Data Preprocessing
-
-Since KNN is a distance-based algorithm, feature scaling is essential.  
-All features are standardized using Z-score normalization to ensure that each  
-feature contributes equally to the distance computation.
-
-The dataset is split into training and testing sets to evaluate the model’s  
-generalization performance.
-
----
-
-## Model Training and Evaluation
-
-The KNN classifier is trained using the standardized training data and evaluated  
-on a held-out test set. Classification accuracy is used as the evaluation metric.
-
-The results show that KNN achieves high accuracy on this dataset, indicating  
-that local similarity patterns in the feature space are informative for  
-classification.
-
----
-
-## Hyperparameter Analysis
-
-To study the impact of the number of neighbors k, the model is evaluated  
-across a range of odd values of k. The results demonstrate the classical  
-bias–variance trade-off:
-
-- Small values of k lead to high variance and sensitivity to noise.
-    
-- Large values of k produce smoother decision boundaries with higher bias.
-    
-- An intermediate value of k achieves the best classification performance.
+- Compatible with the project testing framework (`pytest`)
     
 
 ---
 
-## Files in This Directory
+## Class API
+```
+from rice_ml.knn import KNNClassifier  
 
-- `KNN.ipynb`  
-    Jupyter notebook containing algorithm explanation, data preprocessing,  
-    model training, and hyperparameter analysis.
+clf = KNNClassifier(     
+	k=5,     
+	metric="euclidean" 
+)  
+
+clf.fit(X_train, y_train) 
+y_pred = clf.predict(X_test)`
+
+```
+### Parameters
+
+- `k` : int  
+    Number of nearest neighbors used for majority voting.
     
-- `data/`  
-    Directory containing the Kaggle dataset used in this example.
+- `metric` : str  
+    Distance metric used to compute similarity between samples.  
+    Supported values: `"euclidean"`, `"manhattan"`.
     
+
+---
+
+## Notebook Overview — Real-World Classification
+
+The example notebook demonstrates the application of the KNN algorithm to the  
+**Breast Cancer Wisconsin (Diagnostic)** dataset obtained from Kaggle. The goal  
+is to classify tumors as **malignant** or **benign** based on numerical features  
+extracted from medical imaging data.
+
+### Notebook includes:
+
+1. Data loading and inspection
+    
+2. Target variable encoding (malignant vs. benign)
+    
+3. Feature selection and cleanup
+    
+4. Feature standardization (crucial for KNN)
+    
+5. Train–test split
+    
+6. Training a baseline KNN classifier
+    
+7. Model evaluation:
+    
+    - Classification accuracy
+        
+8. Hyperparameter analysis:
+    
+    - Effect of the number of neighbors $k$
+        
+    - Bias–variance trade-off visualization
+        
+
+---
+
+## Key Results
+
+- KNN achieves **high classification accuracy** on the test set after feature  
+    standardization.
+    
+- Model performance is sensitive to the choice of the number of neighbors.
+    
+- An intermediate value of $k$ provides the best balance between bias and  
+    variance.
+    
+- The results empirically demonstrate the theoretical behavior of KNN as a  
+    distance-based learning algorithm.
+    
+
+---
+
+## Unit Tests
+
+Unit tests ensure the correctness and robustness of the implementation:
+
+- Model initialization with valid and invalid parameters
+    
+- Correct behavior of `fit()` and `predict()`
+    
+- Validation of distance metric handling
+    
+- Correct predictions on simple synthetic datasets
+    
+
+Run tests with:
+
+`pytest tests/test_knn.py -q`
 
 ---
 
 ## Summary
 
-This example demonstrates a complete end-to-end implementation of the  
-k-Nearest Neighbors algorithm, including algorithm design, preprocessing,  
-model evaluation, and hyperparameter analysis. It highlights the strengths  
-and limitations of KNN and illustrates how distance-based learning methods  
-can be applied to real-world classification problems.
+This module provides a clear and complete implementation of the k-Nearest  
+Neighbors algorithm, highlighting the strengths and limitations of  
+distance-based learning. Together with the accompanying notebook and tests,  
+it serves as a practical and educational example of non-parametric  
+classification methods in machine learning.
