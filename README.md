@@ -311,6 +311,19 @@ pytest tests/test_perceptron.py -q
 
 ---
 
+## Running Examples (Jupyter Notebooks)
+
+All example notebooks are located in the `examples/` directory.
+
+To run the notebooks locally:
+
+Clone the repository:
+```
+   git clone https://github.com/Chuangyi-Xu/INDE-577.git
+   cd INDE-577
+```
+---
+
 ## License
 
 This repository is released under the MIT License.  
